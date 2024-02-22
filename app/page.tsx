@@ -1,9 +1,10 @@
 "use client"
 
 import { ReactNode, useState } from "react"
-import { ArrowRight } from "lucide-react"
+import { AlertCircle, ArrowRight } from "lucide-react"
 import { useTheme } from "next-themes"
 
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { BACKGROUND_OPTIONS } from "@/components/background"
 import Playground from "@/components/playground"
@@ -61,7 +62,7 @@ export default function Home() {
 
             <div className="mt-10 flex gap-4">
               <a
-                href="https://github.com/ibelick/background-snippets"
+                href="https://github.com/trinhdinhtai/next-bg-snippets"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center"
@@ -77,6 +78,14 @@ export default function Home() {
           </div>
 
           <div className="overflow-hidden px-4 pb-20 pt-52 md:px-10">
+            <Alert className="mb-10">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                These backgrounds are made for a full page background. The
+                preview can be different from the actual result. Click on
+                preview to test it. And don't forget to tweak it to your needs.
+              </AlertDescription>
+            </Alert>
             <div className="grid grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-4">
               {BACKGROUND_OPTIONS.map((background, index) => {
                 return (
