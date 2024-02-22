@@ -1,6 +1,12 @@
+"use client"
+
 import { ArrowRight } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
+
 export default function Home() {
+  const handleResetBackground = () => {}
+
   return (
     <>
       <div>
@@ -36,6 +42,22 @@ export default function Home() {
               <span className="cursor-pointer opacity-70">Vanilla CSS</span> for
               easy integration.
             </p>
+
+            <div className="mt-10 flex gap-4">
+              <a
+                href="https://github.com/ibelick/background-snippets"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+                <Button>
+                  Go to GitHub <ArrowRight className="pl-0.5" size={16} />
+                </Button>{" "}
+              </a>
+              <Button variant="secondary" onClick={handleResetBackground}>
+                Reset background
+              </Button>
+            </div>
           </div>
         </div>
       </div>
