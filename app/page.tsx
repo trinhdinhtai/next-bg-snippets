@@ -1,5 +1,6 @@
 "use client"
 
+import { ReactNode, useState } from "react"
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -7,11 +8,19 @@ import { BACKGROUND_OPTIONS } from "@/components/background"
 import Playground from "@/components/playground"
 
 export default function Home() {
+  const [preview, setPreview] = useState<null | ReactNode>(null)
+
   const handleResetBackground = () => {}
 
   return (
     <>
       <div>
+        {preview && (
+          <div className="fixed left-0 top-0 -z-10 h-full w-full">
+            {preview}
+          </div>
+        )}
+
         <div className="relative mx-auto h-screen w-full max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="relative mx-auto flex max-w-2xl flex-col items-center">
             <a
@@ -66,7 +75,9 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-4">
               {BACKGROUND_OPTIONS.map((background, index) => {
                 return (
-                  <Playground key={index}>{background.component}</Playground>
+                  <Playground key={index} setPreview={setPreview}>
+                    {background.component}
+                  </Playground>
                 )
               })}
             </div>

@@ -1,16 +1,27 @@
 "use client"
 
-import { ReactNode } from "react"
+import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react"
+import ReactDOMServer from "react-dom/server"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 
 interface PlayGroundProps {
-  children: ReactNode
+  children: ReactElement
+  setPreview: Dispatch<SetStateAction<ReactNode>>
 }
 
-export default function Playground({ children }: PlayGroundProps) {
-  const handlePreview = () => {}
-  const handleCopy = () => {}
+export default function Playground({ children, setPreview }: PlayGroundProps) {
+  const handlePreview = () => {
+    setPreview(children)
+  }
+
+  const handleCopy = () => {
+    const code = ReactDOMServer.renderToString(children)
+
+    navigator.clipboard.writeText(code)
+    toast.success("Copied to clipboard")
+  }
 
   return (
     <div className="relative min-h-[300px] w-full overflow-hidden rounded-lg ring-1 ring-slate-900/10">
