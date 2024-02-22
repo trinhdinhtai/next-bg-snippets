@@ -3,6 +3,8 @@
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { BACKGROUND_OPTIONS } from "@/components/background"
+import Playground from "@/components/playground"
 
 export default function Home() {
   const handleResetBackground = () => {}
@@ -57,6 +59,16 @@ export default function Home() {
               <Button variant="secondary" onClick={handleResetBackground}>
                 Reset background
               </Button>
+            </div>
+          </div>
+
+          <div className="overflow-hidden px-4 pb-20 pt-52 md:px-10">
+            <div className="grid grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-4">
+              {BACKGROUND_OPTIONS.map((background, index) => {
+                return (
+                  <Playground key={index}>{background.component}</Playground>
+                )
+              })}
             </div>
           </div>
         </div>
