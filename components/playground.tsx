@@ -1,18 +1,29 @@
 "use client"
 
 import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react"
+import { useTheme } from "next-themes"
 import ReactDOMServer from "react-dom/server"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 
+type Theme = "dark" | "light" | "system"
+
 interface PlayGroundProps {
   children: ReactElement
+  theme: Theme
   setPreview: Dispatch<SetStateAction<ReactNode>>
 }
 
-export default function Playground({ children, setPreview }: PlayGroundProps) {
+export default function Playground({
+  children,
+  theme,
+  setPreview,
+}: PlayGroundProps) {
+  const { setTheme } = useTheme()
+
   const handlePreview = () => {
+    setTheme(theme)
     setPreview(children)
   }
 

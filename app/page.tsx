@@ -2,15 +2,20 @@
 
 import { ReactNode, useState } from "react"
 import { ArrowRight } from "lucide-react"
+import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
 import { BACKGROUND_OPTIONS } from "@/components/background"
 import Playground from "@/components/playground"
 
 export default function Home() {
+  const { setTheme } = useTheme()
   const [preview, setPreview] = useState<null | ReactNode>(null)
 
-  const handleResetBackground = () => {}
+  const handleResetBackground = () => {
+    setPreview(null)
+    setTheme("light")
+  }
 
   return (
     <>
@@ -75,7 +80,11 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-4">
               {BACKGROUND_OPTIONS.map((background, index) => {
                 return (
-                  <Playground key={index} setPreview={setPreview}>
+                  <Playground
+                    key={index}
+                    theme={background.theme}
+                    setPreview={setPreview}
+                  >
                     {background.component}
                   </Playground>
                 )
