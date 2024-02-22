@@ -81,9 +81,9 @@ export default function Home() {
             <Alert className="mb-10">
               <AlertCircle className="h-4 w-4" />
               <AlertDescription>
-                These backgrounds are made for a full page background. The
+                {`These backgrounds are made for a full page background. The
                 preview can be different from the actual result. Click on
-                preview to test it. And don't forget to tweak it to your needs.
+                preview to test it. And don't forget to tweak it to your needs.`}
               </AlertDescription>
             </Alert>
             <div className="grid grid-cols-1 gap-6 pb-6 md:grid-cols-2 lg:grid-cols-4">
