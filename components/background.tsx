@@ -156,6 +156,22 @@ const BgDarkGrid3 = () => {
   )
 }
 
+const BgLightNoise = () => {
+  return (
+    <div className="relative h-full w-full bg-white">
+      <div className="absolute bottom-0 left-0 right-0 top-0 bg-[url('/noise.png')] bg-[size:300px_300px] bg-left-top" />
+    </div>
+  )
+}
+
+const BgDarkNoise = () => {
+  return (
+    <div className="relative h-full w-full bg-slate-950">
+      <div className="absolute bottom-0 left-0 right-0 top-0 bg-[url('/noise.png')] bg-[size:300px_300px] bg-left-top" />
+    </div>
+  )
+}
+
 export const BACKGROUND_OPTIONS = [
   {
     name: "Background Light Gradient 1",
@@ -265,6 +281,16 @@ export const BACKGROUND_OPTIONS = [
   {
     name: "Background Dark Grid 3",
     component: <BgDarkGrid3 />,
+    theme: "dark",
+  },
+  {
+    name: "Background Light Noise",
+    component: <BgLightNoise />,
+    theme: "light",
+  },
+  {
+    name: "Background Dark Noise",
+    component: <BgDarkNoise />,
     theme: "dark",
   },
 ] as const
